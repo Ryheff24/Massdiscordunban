@@ -1,5 +1,5 @@
 # Mass Discord Unban bot
-Used to mass unban discord users.
+Used to mass unban discord users in the case of a mass discord ban spam bot or just a mass discord unban.
 
 # Installation
 
