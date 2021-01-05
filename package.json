@@ -1,0 +1,22 @@
+{
+  "name": "massdiscordunban",
+  "version": "1.0.0",
+  "description": "used to mass unban discord members",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ryheff24/Massdiscordunban.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ryheff24/Massdiscordunban/issues"
+  },
+  "homepage": "https://github.com/Ryheff24/Massdiscordunban#readme",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  }
+}
