@@ -25,7 +25,7 @@ client.login('insert token here')
 
 Next on the Discord developers page navigate to OAuth2.
 
-Under SCOPES Select Bot and scroll down and select Ban Members.
+Under SCOPES Select Bot and scroll down to BOT PERMISSIONS and select Ban Members.
 
 Copy the discord link about and add to the server. 
 
