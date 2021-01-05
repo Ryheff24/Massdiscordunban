@@ -44,3 +44,5 @@ To start the unban proccess type `!unbanall` in a Discord channel.
 Please allow time for the bot to unban.
 
 To check if the bot is finished, on Discord navigate to Server Settings > Bans you will see `NO BANS` in the top left corner.
+
+If you have any problems Send a message on [Twitter](https://twitter.com/Ryheff24) or Discord: Ryheff24#6774
