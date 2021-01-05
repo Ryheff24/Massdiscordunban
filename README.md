@@ -1,4 +1,4 @@
-# Massdiscordunban
+# Mass Discord Unban bot
 Used to mass unban discord users.
 
 # Installation
