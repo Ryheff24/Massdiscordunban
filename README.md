@@ -27,7 +27,7 @@ Next on the Discord developers page navigate to OAuth2.
 
 Under SCOPES Select Bot and scroll down to BOT PERMISSIONS and select Ban Members.
 
-Copy the discord link about and add to the server. 
+Copy the discord link above and add to the server. 
 
 Note you MUST have Manage Server/Server Administrator permissions to add a bot.
 
