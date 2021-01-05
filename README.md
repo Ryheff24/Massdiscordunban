@@ -16,16 +16,16 @@ Used to mass unban discord users.
 
 # Creating/Adding a Bot
 
-Follow this guide on how to setup a bot application: https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot
+Follow this guide on how to setup a bot application [Here](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)
 
-Place the token token in line 24 shown below:
+Find the following code and insert the token.
 ```js
 client.login('insert token here') 
 ```
 
-Next on the Discord developers page navigate to OAuth2
+Next on the Discord developers page navigate to OAuth2.
 
-Under SCOPES Select Bot and scroll down and select Ban Members
+Under SCOPES Select Bot and scroll down and select Ban Members.
 
 Copy the discord link about and add to the server. 
 
