@@ -9,7 +9,7 @@ client.on('ready', () => {
 	console.log('Bot is online! Use !unbanall to unban all users.');
 });
 
-client.on("message", message => {
+client.on("messageCreate", message => {
     
     switch(message.content.toLowerCase()) {
         case ("!unbanall"):
