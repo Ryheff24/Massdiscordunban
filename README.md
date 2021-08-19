@@ -4,7 +4,7 @@ Used to mass unban discord users in the case of a mass discord ban spam bot or j
 # Installation
 
 ## Download the Files
-- Start by installing [Node.js](https://nodejs.org/en/download/).
+- Start by installing [Node.js](https://nodejs.org/en/download/). (Version 16+ Required)
 - Next download the lastest release.
 - unzip the .zip file.
 - Open the the folder that contains the `index.js` file.
