@@ -4,13 +4,14 @@
   "description": "used to mass unban discord members",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ."
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ryheff24/Massdiscordunban.git"
   },
-  "author": "",
+  "author": "Ryheff24",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Ryheff24/Massdiscordunban/issues"
