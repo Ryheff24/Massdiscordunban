@@ -40,7 +40,8 @@ client.on("messageCreate", message => {
             });
           })
           .then(() => console.log("Users are being unbanned."))
-          .catch(e => console.log(e));
+          .catch(e => console.log(e))
+          .then(message.reply("Mass-Unban successful"));
       } else {
         console.log("You do not have enough permissions for this command.");
       }
