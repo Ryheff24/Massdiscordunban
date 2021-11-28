@@ -13,7 +13,7 @@ Used to mass unban discord users in the case of a mass discord ban spam bot or j
 
 ## NPM Installation
 
--   Open terminal (Windows Command prompt, Powershell, Bash, etc).
+-   Open terminal (Windows Command prompt, PowerShell, Bash, etc).
 -   Navigate to the Folder where the `index.js` file is.
 -   run `npm install`
 
@@ -43,7 +43,7 @@ In the command prompt run `node index.js` or `npm start`
 
 After you will get a message saying `Bot is online! Use !unbanall to unban all users.`
 
-To start the unban proccess type `!unbanall` in a Discord channel.
+To start the unban process type `!unbanall` in a Discord channel.
 
 Please allow time for the bot to unban.
 
