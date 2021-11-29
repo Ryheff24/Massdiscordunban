@@ -1,4 +1,4 @@
-const Discord = require("discord.js"); // V13 Now :]
+const Discord = require("discord.js");
 const client = new Discord.Client({
   intents: [
     "GUILDS",
@@ -18,7 +18,7 @@ const client = new Discord.Client({
   ],
   partials: ["CHANNEL", "MESSAGE", "REACTIONS"],
   allowedMentions: { parse: ["users", "roles", "everyone"], repliedUser: true }
-}); // I just put them all in, just in case something changes in the future with guild management.
+});
 
 client.on("ready", () => {
   console.log("Bot is online! Use !unbanall to unban all users.");
@@ -32,7 +32,7 @@ client.on("messageCreate", message => {
           .fetch()
           .then(bans => {
             if (bans.size == 0) {
-              message.channel.send({ content: "There are no banned users." });
+              message.reply({ content: "There are no banned users." });
               throw "No members to unban.";
             }
             bans.forEach(ban => {
@@ -41,7 +41,7 @@ client.on("messageCreate", message => {
           })
           .then(() => console.log("Users are being unbanned."))
           .catch(e => console.log(e))
-          .then(message.reply("Mass-Unban successful"));
+          .then(message.reply({ content: "Mass-Unban successful" }));
       } else {
         console.log("You do not have enough permissions for this command.");
       }
