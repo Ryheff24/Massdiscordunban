@@ -4,10 +4,11 @@
   "description": "used to mass unban discord members",
   "main": "index.js",
   "keywords": [
-    "mass unban",
-    "discord"
+    "mass unban", "discord"
   ],
   "scripts": {
+    "prestart": "node deploy-commands.js",
+    "predev": "npm run prestart",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "dev": "nodemon ."
@@ -24,8 +25,7 @@
     {
       "name": "Itz-Hyperz",
       "url": "https://github.com/Itz-Hyperz/"
-    },
-    {
+    }, {
       "name": "MRDGH2821",
       "url": "https://github.com/MRDGH2821/"
     }
