@@ -1,3 +1,4 @@
+
 const { Client } = require("discord.js"); // V13 Now :]
 const { token } = require("./config.json");
 const { REST } = require("@discordjs/rest");
@@ -5,6 +6,7 @@ const { Routes } = require("discord-api-types/v9");
 const rest = new REST({ version: "9" }).setToken(token);
 const client = new Client({
   intents: ["GUILDS", "GUILD_BANS", "GUILD_MESSAGE_TYPING"]
+
 });
 
 client.once("ready", () => {
@@ -38,6 +40,7 @@ client.on("interactionCreate", async interaction => {
         await interaction.editReply(`Unbanned all ${banNumbers} users`);
       } catch (e) {
         await interaction.editReply(`There was some unexpected error:\n\n${e}`);
+
       }
     } else {
       await interaction.editReply(
