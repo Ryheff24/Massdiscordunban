@@ -2,6 +2,8 @@
 
 Used to mass unban discord users in the case of a mass discord ban spam bot or just a mass discord unban.
 
+This is guide for Bot version v1.x
+
 # Installation
 
 ## Download the Files
