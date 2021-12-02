@@ -1,10 +1,11 @@
 {
   "name": "massdiscordunban",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "used to mass unban discord members",
   "main": "index.js",
   "keywords": [
-    "mass unban", "discord"
+    "mass unban",
+    "discord"
   ],
   "scripts": {
     "prestart": "node deploy-commands.js",
@@ -25,7 +26,8 @@
     {
       "name": "Itz-Hyperz",
       "url": "https://github.com/Itz-Hyperz/"
-    }, {
+    },
+    {
       "name": "MRDGH2821",
       "url": "https://github.com/MRDGH2821/"
     }
