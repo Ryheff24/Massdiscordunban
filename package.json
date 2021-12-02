@@ -36,6 +36,8 @@
   },
   "homepage": "https://github.com/Ryheff24/Massdiscordunban#readme",
   "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.25.2",
     "discord.js": "^13.1.0"
   }
 }
