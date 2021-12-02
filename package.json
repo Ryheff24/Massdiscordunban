@@ -1,6 +1,6 @@
 {
   "name": "massdiscordunban",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "used to mass unban discord members",
   "main": "index.js",
   "keywords": [
@@ -8,6 +8,8 @@
     "discord"
   ],
   "scripts": {
+    "prestart": "node deploy-commands.js",
+    "predev": "npm run prestart",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "dev": "nodemon ."
@@ -36,6 +38,8 @@
   },
   "homepage": "https://github.com/Ryheff24/Massdiscordunban#readme",
   "dependencies": {
+    "@discordjs/rest": "^0.1.0-canary.0",
+    "discord-api-types": "^0.25.2",
     "discord.js": "^13.1.0"
   }
 }

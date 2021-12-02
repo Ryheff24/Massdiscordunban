@@ -1,52 +1,54 @@
-const Discord = require("discord.js");
-const client = new Discord.Client({
-  intents: [
-    "GUILDS",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGES",
-    "GUILD_MEMBERS",
-    "GUILD_BANS",
-    "GUILD_INTEGRATIONS",
-    "GUILD_WEBHOOKS",
-    "GUILD_INVITES",
-    "GUILD_VOICE_STATES",
-    "GUILD_PRESENCES",
-    "GUILD_MESSAGE_TYPING",
-    "DIRECT_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGE_TYPING"
-  ],
-  partials: ["CHANNEL", "MESSAGE", "REACTIONS"],
-  allowedMentions: { parse: ["users", "roles", "everyone"], repliedUser: true }
+
+const { Client } = require("discord.js"); // V13 Now :]
+const { token } = require("./config.json");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+const rest = new REST({ version: "9" }).setToken(token);
+const client = new Client({
+  intents: ["GUILDS", "GUILD_BANS", "GUILD_MESSAGE_TYPING"]
+
 });
 
-client.on("ready", () => {
-  console.log("Bot is online! Use !unbanall to unban all users.");
+client.once("ready", () => {
+  console.log("Bot is online! Use /unban-all to unban all users.");
 });
 
-client.on("messageCreate", message => {
-  switch (message.content.toLowerCase()) {
-    case "!unbanall":
-      if (message.member.permissions.has("BAN_MEMBERS")) {
-        message.guild.bans
-          .fetch()
-          .then(bans => {
-            if (bans.size == 0) {
-              message.reply({ content: "There are no banned users." });
-              throw "No members to unban.";
-            }
-            bans.forEach(ban => {
-              message.guild.members.unban(ban.user.id);
-            });
-          })
-          .then(() => console.log("Users are being unbanned."))
-          .catch(e => console.log(e))
-          .then(message.reply({ content: "Mass-Unban successful" }));
-      } else {
-        console.log("You do not have enough permissions for this command.");
+client.on("interactionCreate", async interaction => {
+  await interaction.deferReply();
+  if (!interaction.isCommand()) return;
+
+  const { commandName } = interaction;
+  if (commandName === "unban-all") {
+    if (interaction.member.permissions.has("BAN_MEMBERS")) {
+      try {
+        const bans = await rest.get(Routes.guildBans(interaction.guild.id));
+        //console.log(bans);
+        console.log(bans[0]);
+        const banNumbers = bans.length;
+        await interaction.editReply(
+          `Found ${banNumbers} bans in ${interaction.guild.name}`
+        );
+
+        for (const v of bans) {
+          await interaction.editReply(
+            `Unbanning user: ${v.user.username}#${v.user.discriminator}`
+          );
+          //  console.log(v);
+
+          await interaction.guild.members.unban(v.user.id);
+        }
+        await interaction.editReply(`Unbanned all ${banNumbers} users`);
+      } catch (e) {
+        await interaction.editReply(`There was some unexpected error:\n\n${e}`);
+
       }
-      break;
+    } else {
+      await interaction.editReply(
+        "You do not have enough permissions for this command."
+      );
+      console.log("You do not have enough permissions for this command.");
+    }
   }
 });
 
-client.login("insert token here");
+client.login(token);

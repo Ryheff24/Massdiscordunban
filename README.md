@@ -1,52 +1,110 @@
 # Mass Discord Unban bot
 
-Used to mass unban discord users in the case of a mass discord ban spam bot or just a mass discord unban.
+A discord bot to mass unban users in a server in the event of spam/rogue/malicious bot banning all users or simply to mass unban.
 
-# Installation
+This is version 2.0 which uses slash commands, lesser Intents & permissions.
 
-## Download the Files
+For version 1.x check [here](./README_old.md)
 
--   Start by installing [Node.js](https://nodejs.org/en/download/). (Version 16+ Required)
--   Next download the latest release & unzip the file.
--   Or clone this repository.
--   Open the folder that contains the `index.js` file.
+## Setup instructions
 
-## NPM Installation
+### Installing dependencies
 
--   Open terminal (Windows Command prompt, PowerShell, Bash, etc).
--   Navigate to the Folder where the `index.js` file is.
--   run `npm install`
+First install [Node.js](https://nodejs.org/en/download/current/) v16.6.0 or higher. Or follow this [guide](https://discordjs.guide/preparations/)
 
-# Creating/Adding a Bot
+Then clone/download this repository and open the folder containing bot files. One of the files should files should be called `index.js`.
 
-Follow this guide on how to setup a bot application [Here](https://discordjs.guide/preparations/setting-up-a-bot-application.html#creating-your-bot)
+Open terminal in that folder (Command prompt, Powershell, Bash, etc) and run this command:
 
-Find the following code and insert the token.
-
-```js
-client.login('insert token here')
+```bash
+npm install
 ```
 
-Next on the Discord developers page navigate to OAuth2.
+### Creating & Adding a Bot
 
-Under SCOPES Select Bot and scroll down to BOT PERMISSIONS and select Ban Members. Make sure to select all privileged intents
+#### Creating a Bot
 
-Copy the discord link above and add to the server.
+Follow this [guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html) to create the bot.
 
-Note you MUST have Manage Server/Server Administrator permissions to add a bot.
+In the Bot page while copying token scroll down & select these:
 
-# Usage
+![Authorization Flow](https://i.imgur.com/2vuo9VL.png)
 
-After you have installed the NPM packages and created a bot you are now ready to run the bot.
+_You may select `Public bot`, but it is not required. If selected anyone can invite your bot. If not, no body except you can invite bot._
 
-In the command prompt run `node index.js` or `npm start`
+![Privileged Gateway Intents](https://i.imgur.com/NJUFUkj.png)
 
-After you will get a message saying `Bot is online! Use !unbanall to unban all users.`
+#### Adding the bot
 
-To start the unban process type `!unbanall` in a Discord channel.
+Follow this [guide](https://discordjs.guide/preparations/adding-your-bot-to-servers.html) to get bot invite link.
 
-Please allow time for the bot to unban.
+While setting up the invite link, make sure you select these bot permissions:
 
-To check if the bot is finished, on Discord navigate to Server Settings > Bans you will see `NO BANS` in the top left corner.
+![Bot Permissions](https://i.imgur.com/Rmon7OJ.png)
 
-If you have any problems Send a message on [Twitter](https://twitter.com/Ryheff24) or Discord: Ryheff24#6774
+_You may select Administrator permission instead of the above given permissions so that the bot works flawlessly_
+
+**Note:** You must have `Manage Server` permission or `Administrator` permission on the server where you will be adding the bot.
+
+#### Creating config.json
+
+[Guide](https://discordjs.guide/creating-your-bot/#using-config-json)
+
+Copy `clientId` from OAuth2 page.
+![Copying Client ID](https://i.imgur.com/aiBC8cF.png)
+
+Copy `token` from Bot page.
+![Copying Bot Token](https://i.imgur.com/DUKebFW.png)
+
+Create a new file called `config.json` and put the following:
+
+```js
+{
+  "token": "insert-bot-token-here",
+  "clientId": "insert-clientId"
+}
+```
+
+## Usage
+
+If you have followed the steps correctly till now, then the basic setup is done!
+
+The only thing remains is to turn on the bot.
+
+Open terminal in the bot folder and run the following command:
+
+```bash
+npm start
+```
+
+In the terminal window you will see:
+
+```bash
+> massdiscordunban@1.1.0 prestart
+> node deploy-commands.js
+
+Successfully registered application commands.
+
+> massdiscordunban@1.1.0 start
+> node .
+
+Bot is online! Use /unban-all to unban all users.
+```
+
+Open discord, and use the slash command: `/unban-all`.
+
+Wait for the bot to finish unbanning.
+
+To check if the bot has unbanned all users, go to Server Settings > Bans.
+There you should see 0 Bans or `NO BANS`.
+
+
+# I need HALP!
+
+Incase of any issues, contact:
+
+Ryheff24 on [Twitter](https://twitter.com/Ryheff24) or on Discord: `Ryheff24#6774`
+
+# License
+
+[MIT](./LICENSE)
