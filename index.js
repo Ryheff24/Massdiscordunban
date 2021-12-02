@@ -1,52 +1,61 @@
-const Discord = require("discord.js"); // V13 Now :]
-const { token } = require("./config.json");
-const client = new Discord.Client({
-  intents: [
-    "GUILDS",
-    "GUILD_MESSAGES",
-    "GUILD_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGES",
-    "GUILD_MEMBERS",
-    "GUILD_BANS",
-    "GUILD_INTEGRATIONS",
-    "GUILD_WEBHOOKS",
-    "GUILD_INVITES",
-    "GUILD_VOICE_STATES",
-    "GUILD_PRESENCES",
-    "GUILD_MESSAGE_TYPING",
-    "DIRECT_MESSAGE_REACTIONS",
-    "DIRECT_MESSAGE_TYPING"
-  ],
-  partials: ["CHANNEL", "MESSAGE", "REACTIONS"],
-  allowedMentions: { parse: ["users", "roles", "everyone"], repliedUser: true }
-}); // I just put them all in, just in case something changes in the future with guild management.
-
-client.on("ready", () => {
-  console.log("Bot is online! Use !unbanall to unban all users.");
+const { Client } = require("discord.js"); // V13 Now :]
+const { token, clientId } = require("./config.json");
+const client = new Client({
+  intents: ["GUILDS", "GUILD_BANS", "GUILD_MESSAGE_TYPING"]
 });
 
-client.on("messageCreate", message => {
-  switch (message.content.toLowerCase()) {
-    case "!unbanall":
-      if (message.member.permissions.has("BAN_MEMBERS")) {
-        message.guild.bans
-          .fetch()
-          .then(bans => {
-            if (bans.size == 0) {
-              message.channel.send({ content: "There are no banned users." });
-              throw "No members to unban.";
-            }
-            bans.forEach(ban => {
-              message.guild.members.unban(ban.user.id);
-            });
-          })
-          .then(() => console.log("Users are being unbanned."))
-          .catch(e => console.log(e))
-          .then(message.reply("Mass-Unban successful"));
-      } else {
-        console.log("You do not have enough permissions for this command.");
-      }
-      break;
+const { SlashCommandBuilder } = require("@discordjs/builders");
+const { REST } = require("@discordjs/rest");
+const { Routes } = require("discord-api-types/v9");
+
+const commands = [
+  new SlashCommandBuilder()
+    .setName("unban-all")
+    .setDescription("Unbans all users")
+].map(command => command.toJSON());
+
+const rest = new REST({ version: "9" }).setToken(token);
+
+rest
+  .put(Routes.applicationCommands(clientId), { body: commands })
+  .then(() => console.log("Successfully registered application commands."))
+  .catch(console.error);
+
+client.on("ready", () => {
+  console.log("Bot is online! Use /unban-all to unban all users.");
+});
+
+client.on("interactionCreate", interaction => {
+  if (!interaction.isCommand()) return;
+
+  const { commandName } = interaction;
+  if (commandName === "unban-all") {
+    if (interaction.member.permissions.has("BAN_MEMBERS")) {
+      interaction.deferReply();
+      interaction.guild.bans
+        .fetch()
+        .then(bans => {
+          if (bans.size == 0) {
+            interaction.reply({ content: "There are no banned users." });
+            throw "No members to unban.";
+          }
+          bans.forEach(ban => {
+            interaction.guild.members.unban(ban.user.id);
+          });
+        })
+        .then(() => {
+          interaction.editReply("Users are being unbanned");
+          console.log("Users are being unbanned.");
+        })
+        .catch(e => {
+          interaction.editReply(`Unknown error:\n\n${e}`);
+          console.log(e);
+        })
+        .then(interaction.followUp("Mass-Unban successful"));
+    } else {
+      interaction.reply("You do not have enough permissions for this command.");
+      console.log("You do not have enough permissions for this command.");
+    }
   }
 });
 
