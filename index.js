@@ -1,4 +1,5 @@
 const Discord = require("discord.js"); // V13 Now :]
+const { token } = require("./config.json");
 const client = new Discord.Client({
   intents: [
     "GUILDS",
@@ -49,4 +50,4 @@ client.on("messageCreate", message => {
   }
 });
 
-client.login("insert token here");
+client.login(token);
