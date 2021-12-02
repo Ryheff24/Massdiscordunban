@@ -103,7 +103,7 @@ There you should see 0 Bans or `NO BANS`.
 
 Incase of any issues, contact:
 
-Ryheff24 on [Twitter](https://twitter.com/Ryheff24) or on Discord: Ryheff24#6774
+Ryheff24 on [Twitter](https://twitter.com/Ryheff24) or on Discord: `Ryheff24#6774`
 
 # License
 
