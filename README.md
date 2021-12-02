@@ -2,6 +2,10 @@
 
 A discord bot to mass unban users in a server in the event of spam/rogue/malicious bot banning all users or simply to mass unban.
 
+This is version 2.0 which uses slash commands, lesser Intents & permissions.
+
+For version 1.x check [here](./README_old.md)
+
 ## Setup instructions
 
 ### Installing dependencies
@@ -18,7 +22,7 @@ npm install
 
 ### Creating & Adding a Bot
 
-#### Creation
+#### Creating a Bot
 
 Follow this [guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html) to create the bot.
 
@@ -30,7 +34,7 @@ _You may select `Public bot`, but it is not required. If selected anyone can inv
 
 ![Privileged Gateway Intents](https://i.imgur.com/NJUFUkj.png)
 
-#### Adding to your Server
+#### Adding the bot
 
 Follow this [guide](https://discordjs.guide/preparations/adding-your-bot-to-servers.html) to get bot invite link.
 
@@ -74,11 +78,33 @@ npm start
 ```
 
 In the terminal window you will see:
+
 ```bash
+> massdiscordunban@1.1.0 prestart
+> node deploy-commands.js
+
 Successfully registered application commands.
+
+> massdiscordunban@1.1.0 start
+> node .
+
 Bot is online! Use /unban-all to unban all users.
 ```
 
 Open discord, and use the slash command: `/unban-all`.
 
-Wait for the bot to finish banning.
+Wait for the bot to finish unbanning.
+
+To check if the bot has unbanned all users, go to Server Settings > Bans.
+There you should see 0 Bans or `NO BANS`.
+
+
+# I need HALP!
+
+Incase of any issues, contact:
+
+Ryheff24 on [Twitter](https://twitter.com/Ryheff24) or on Discord: Ryheff24#6774
+
+# License
+
+[MIT](./LICENSE)
