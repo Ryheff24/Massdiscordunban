@@ -21,7 +21,7 @@ client.on("interactionCreate", async interaction => {
       try {
         const bans = await rest.get(Routes.guildBans(interaction.guild.id));
         //console.log(bans);
-        console.log(bans[0]);
+        // console.log(bans[0]);
         const banNumbers = bans.length;
         await interaction.editReply(
           `Found ${banNumbers} bans in ${interaction.guild.name}`

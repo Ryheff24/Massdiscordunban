@@ -18,7 +18,7 @@ client.on("messageCreate", message => {
         message.guild.bans
           .fetch()
           .then(bans => {
-            console.log(bans[0]);
+            // console.log(bans[0]);
             if (bans.size == 0) {
               throw "No members to unban.";
             } else {
