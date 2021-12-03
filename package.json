@@ -1,10 +1,11 @@
 {
   "name": "massdiscordunban",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "used to mass unban discord members",
   "main": "index.js",
   "keywords": [
-    "mass unban", "discord"
+    "mass unban",
+    "discord"
   ],
   "scripts": {
     "dev1": "nodemon bot1.js",
@@ -28,7 +29,8 @@
     {
       "name": "Itz-Hyperz",
       "url": "https://github.com/Itz-Hyperz/"
-    }, {
+    },
+    {
       "name": "MRDGH2821",
       "url": "https://github.com/MRDGH2821/"
     }
