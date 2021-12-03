@@ -1,4 +1,3 @@
-
 const { Client } = require("discord.js"); // V13 Now :]
 const { token } = require("./config.json");
 const { REST } = require("@discordjs/rest");
