@@ -77,7 +77,7 @@ _`clientId` is optional for prefix based bot_
 
 If you have followed the steps correctly till now, then the basic setup is done!
 
-The only thing remains is to turn on the bot.
+The only thing remains is to Switch on the bot.
 
 ### For Prefix command based bot
 
