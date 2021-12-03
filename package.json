@@ -7,14 +7,14 @@
     "mass unban", "discord"
   ],
   "scripts": {
+    "dev1": "nodemon bot1.js",
     "bot1": "node bot1.js",
-    "bot2": "node bot2.js",
     "prebot2": "node deploy-commands.js",
     "predev2": "npm run prestart",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run bot2",
     "dev2": "nodemon bot2.js",
-    "dev1": "nodemon bot1.js"
+    "bot2": "node bot2.js",
+    "prestart": "node deploy-commands.js",
+    "start": "npm run bot2"
   },
   "repository": {
     "type": "git",
