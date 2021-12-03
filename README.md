@@ -130,7 +130,10 @@ There you should see 0 Bans or `NO BANS`.
 # I need HALP!
 
 Sometimes you might run into an issue that Slash command bot is not working.
-So follow this in order:
+It is because the commands are getting registered in background still and thus not able to use the command.
+In that case, wait for a minute or two and then run again.
+
+If it is not working still, follow this in order:
 
 -   Switch off the bot (i.e. close terminal)
 -   Kick the bot (this is important)
