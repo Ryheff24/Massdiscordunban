@@ -26,7 +26,7 @@ npm install
 
 Follow this [guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html) to create the bot.
 
-Navigate to the OAuth2 tab in the Discord developers Dashboard and select URL Generator.
+Navigate to the OAuth2 tab in the Discord Developers Dashboard and select URL Generator.
 
 After input the following settings as shown below(applications.commands IS REQUIRED):
 
