@@ -31,9 +31,11 @@ npm install
 
 Follow this [guide](https://discordjs.guide/preparations/setting-up-a-bot-application.html) to create the bot.
 
-In the Bot page while copying token scroll down & select these:
+Navigate to the OAuth2 tab in the Discord Developers Dashboard and select URL Generator.
 
-![Authorization Flow](https://i.imgur.com/2vuo9VL.png)
+After input the following settings as shown below(applications.commands IS REQUIRED):
+
+![Authorization Flow](https://i.imgur.com/dM2KQev.png)
 
 _You may select `Public bot`, but it is not required. If selected anyone can invite your bot. If not, no body except you can invite bot._
 
@@ -116,6 +118,7 @@ Successfully registered application commands.
 > node bot2.js
 
 Bot is online! Use /unban-all to unban all users.
+Your Bot invite link: https://discord.com/api/oauth2/authorize?client_id=<youtclientid>&scope=bot+applications.commands&permissions=2054
 ```
 
 Open discord, and use the slash command: `/unban-all`.
