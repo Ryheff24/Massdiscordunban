@@ -3,12 +3,14 @@ const { token } = require("./config.json");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const rest = new REST({ version: "9" }).setToken(token);
+const { Permissions } = require("discord.js");
 const client = new Client({
   intents: ["GUILDS", "GUILD_BANS", "GUILD_MESSAGE_TYPING"]
 });
 
 client.once("ready", () => {
   console.log("Bot is online! Use /unban-all to unban all users.");
+  console.log("Your Bot invite link: " + client.generateInvite({ scopes: ['bot', 'applications.commands'], permissions: [Permissions.FLAGS.SEND_MESSAGES, Permissions.FLAGS.BAN_MEMBERS, Permissions.FLAGS.KICK_MEMBERS]}));
 });
 
 client.on("interactionCreate", async interaction => {
