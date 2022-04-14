@@ -14,10 +14,9 @@ const client = new Client({
   intents: ['GUILDS', 'GUILD_MESSAGES', 'GUILD_BANS', 'GUILD_MESSAGE_TYPING'],
 });
 
-const onGoingBans = [];
-
 /**
- *
+ * wrapper function to edit the message
+ * @function editContent
  * @param {CommandInteraction|Message} intermsg
  * @param {MessagePayload} payload
  */
@@ -35,13 +34,13 @@ async function editContent(intermsg, payload) {
 async function startBan(intermsg) {
   const { guild } = intermsg;
   const { member } = intermsg;
-  console.log(onGoingBans);
-  if (onGoingBans.includes(guild.id)) {
+  const gid = `g${guild.id}`;
+  if (process.env[gid]) {
     const msg = 'Unban process is already happening in this server';
     editContent(intermsg, msg);
   } else {
     try {
-      onGoingBans.push(guild.id);
+      process.env[gid] = true;
       if (member.permissions.has('BAN_MEMBERS')) {
         guild.bans.fetch().then(async (bans) => {
           if (bans.size === 0) {
@@ -69,7 +68,7 @@ async function startBan(intermsg) {
         const msg = 'You cannot unban';
         await editContent(intermsg, msg);
       }
-      onGoingBans.splice(onGoingBans.indexOf(guild.id));
+      process.env[gid] = false;
     } catch (error) {
       const msg = `An unexpected error occurred.\nError dump:\n\n${error}`;
       await editContent(intermsg, msg);
@@ -88,7 +87,9 @@ client.once('ready', () => {
     },
   ]);
 
-  console.log('Command deployed! Use /unban-all to unban all users.');
+  console.log(
+    'Command deployed! Use can use any of the following to unban all users:\n /unban-all (slash command, recommended)\n !unbanall (prefix command)\n !unban-all (prefix command)',
+  );
 
   console.log(
     `Your Bot invite link: \n${client.generateInvite({
@@ -117,7 +118,7 @@ client.on('messageCreate', async (message) => {
     const botMsg = await message.reply('Please wait');
     await startBan(botMsg);
   } else if (cmdName === '!check') {
-    message.reply(`${onGoingBans}`);
-    console.log(onGoingBans);
+    message.reply('Check console');
+    console.log(process.env);
   }
 });
