@@ -1,10 +1,9 @@
-const { Client } = require('discord.js'); // V13 Now :]
-const { token } = require('./config.json');
+const { Client, Permissions } = require('discord.js'); // V13 Now :]
 const { REST } = require('@discordjs/rest');
 const { Routes } = require('discord-api-types/v9');
+const { token } = require('./config.json');
 
 const rest = new REST({ version: '9' }).setToken(token);
-const { Permissions } = require('discord.js');
 
 const client = new Client({
   intents: ['GUILDS', 'GUILD_BANS', 'GUILD_MESSAGE_TYPING'],
@@ -12,7 +11,16 @@ const client = new Client({
 
 client.once('ready', () => {
   console.log('Bot is online! Use /unban-all to unban all users.');
-  console.log(`Your Bot invite link: ${client.generateInvite({ scopes: ['bot', 'applications.commands'], permissions: [Permissions.FLAGS.SEND_MESSAGES, Permissions.FLAGS.BAN_MEMBERS, Permissions.FLAGS.KICK_MEMBERS] })}`);
+  console.log(
+    `Your Bot invite link: ${client.generateInvite({
+      scopes: ['bot', 'applications.commands'],
+      permissions: [
+        Permissions.FLAGS.SEND_MESSAGES,
+        Permissions.FLAGS.BAN_MEMBERS,
+        Permissions.FLAGS.KICK_MEMBERS,
+      ],
+    })}`,
+  );
 });
 
 client.on('interactionCreate', async (interaction) => {
@@ -31,12 +39,15 @@ client.on('interactionCreate', async (interaction) => {
           `Found ${banNumbers} bans in ${interaction.guild.name}`,
         );
 
+        // eslint-disable-next-line no-restricted-syntax
         for (const v of bans) {
+          // eslint-disable-next-line no-await-in-loop
           await interaction.editReply(
             `Unbanning user: ${v.user.username}#${v.user.discriminator}`,
           );
           //  console.log(v);
 
+          // eslint-disable-next-line no-await-in-loop
           await interaction.guild.members.unban(v.user.id);
         }
         await interaction.editReply(`Unbanned all ${banNumbers} users`);

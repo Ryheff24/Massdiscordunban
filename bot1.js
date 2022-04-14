@@ -20,8 +20,8 @@ client.on('messageCreate', (message) => {
           .fetch()
           .then((bans) => {
             // console.log(bans[0]);
-            if (bans.size == 0) {
-              throw 'No members to unban.';
+            if (bans.size === 0) {
+              throw new Error('No members to unban.');
             } else {
               bans.forEach((ban) => {
                 message.guild.members.unban(ban.user.id);
@@ -35,6 +35,8 @@ client.on('messageCreate', (message) => {
         console.log('You do not have enough permissions for this command.');
       }
       break;
+
+    // no default
   }
 });
 
