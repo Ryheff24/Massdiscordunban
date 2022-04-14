@@ -2,24 +2,28 @@
 
 A discord bot to mass unban users in a server in the event of spam/rogue/malicious bot banning all users or simply to mass unban.
 
-The codebase has both approaches (i.e. variants): prefix bot command & slash command.
-Slash command bot version: v2.1.0
-Prefix command bot version: v1.2.0
+v3 now comes with less amount of files & confusion!
 
-For v1.1 or v1.0 refer the old [guide](./README_old.md)
+For older releases, please check [here](https://github.com/Ryheff24/Massdiscordunban/releases) or [here](https://github.com/Ryheff24/Massdiscordunban/tags)
 
 ## Setup instructions
 
-The instructions are same for both the approaches. The minute details will be mentioned in wherever needed.
+These are nearly same as previous version. Just comes with minor changes.
 
 ### Installing dependencies
 
 First install [Node.js](https://nodejs.org/en/download/current/) v16.6.0 or higher. Or follow this [guide](https://discordjs.guide/preparations/)
 
 Then clone/download this repository and open the folder containing bot files.
-Some of the files should files should be: `bot1.js`, `bot2.js`, `deploy-commands.js`.
 
+Some of the files should files should be: `index.js` & `package.json.`
 Open terminal in that folder (Command prompt, Powershell, Bash, etc) and run this command:
+
+```bash
+npm install --only=prod
+```
+
+OR
 
 ```bash
 npm install
@@ -33,22 +37,24 @@ Follow this [guide](https://discordjs.guide/preparations/setting-up-a-bot-applic
 
 Navigate to the OAuth2 tab in the Discord Developers Dashboard and select URL Generator.
 
-After input the following settings as shown below(applications.commands IS REQUIRED):
+After input the following settings as shown below(applications.commands **IS REQUIRED**):
 
 ![Authorization Flow](https://i.imgur.com/dM2KQev.png)
 
 _You may select `Public bot`, but it is not required. If selected anyone can invite your bot. If not, no body except you can invite bot._
 
-![Privileged Gateway Intents](https://i.imgur.com/NJUFUkj.png)
-_**Note:**: For prefix based bot, select all intents_
+![Privileged Gateway Intents](https://i.imgur.com/wunzGqb.png)
+_**Note:**: Prefix command will not work if Message Content intent is unselected. Only Slash command will work._
 
 #### Adding the bot
+
+_This step is optional as the bot shows invite link in console window itself_
 
 Follow this [guide](https://discordjs.guide/preparations/adding-your-bot-to-servers.html) to get bot invite link.
 
 While setting up the invite link, make sure you select these bot permissions:
 
-![Bot Permissions](https://i.imgur.com/Rmon7OJ.png)
+![Bot Permissions](https://i.imgur.com/3ZBUVmj.png)
 
 _You may select Administrator permission instead of the above given permissions so that the bot works flawlessly_
 
@@ -58,9 +64,6 @@ _You may select Administrator permission instead of the above given permissions 
 
 [Guide](https://discordjs.guide/creating-your-bot/#using-config-json)
 
-Copy `clientId` from OAuth2 page.
-![Copying Client ID](https://i.imgur.com/aiBC8cF.png)
-
 Copy `token` from Bot page.
 ![Copying Bot Token](https://i.imgur.com/DUKebFW.png)
 
@@ -68,12 +71,9 @@ Create a new file called `config.json` and put the following:
 
 ```js
 {
-  "token": "insert-bot-token-here",
-  "clientId": "insert-clientId"
+  "token": "insert-bot-token-here"
 }
 ```
-
-_`clientId` is optional for prefix based bot_
 
 ## Usage
 
@@ -81,47 +81,31 @@ If you have followed the steps correctly till now, then the basic setup is done!
 
 The only thing remains is to Switch on the bot.
 
-### For Prefix command based bot
-
 Open terminal in the bot folder and run the following command:
 
 ```bash
-npm run bot1
+npm start
 ```
 
-In the terminal window you will see:
+In terminal window you will see:
 
 ```bash
-> massdiscordunban@2.0.0 bot1
-> node bot1.js
-
-Bot is online! Use !unbanall to unban all users.
+Bot is online, deploying command...
+Command deployed! Use can use any of the following to unban all users:
+ /unban-all (slash command, recommended)
+ !unbanall (prefix command)
+ !unban-all (prefix command)
+Your Bot invite link:
+https://discord.com/api/oauth2/authorize?client_id=<your_client_Id>&scope=bot+applications.commands&permissions=277025458182
 ```
 
-### For Slash command based bot
+You may click on the link to invite the bot if haven't done yet.
 
-Open terminal in the bot folder and run the following command:
+Open Discord and use any of the following:
 
-```bash
-npm run bot2
-```
-
-In terminal you will see
-
-```bash
-> massdiscordunban@2.0.0 prebot2
-> node deploy-commands.js
-
-Successfully registered application commands.
-
-> massdiscordunban@2.0.0 bot2
-> node bot2.js
-
-Bot is online! Use /unban-all to unban all users.
-Your Bot invite link: https://discord.com/api/oauth2/authorize?client_id=<youtclientid>&scope=bot+applications.commands&permissions=2054
-```
-
-Open discord, and use the slash command: `/unban-all`.
+- /unban-all (slash command, recommended)
+- !unbanall (prefix command)
+- !unban-all (prefix command)
 
 ### After executing command
 
@@ -138,13 +122,13 @@ In that case, wait for a minute or two and then run again.
 
 If it is not working still, follow this in order:
 
--   Switch off the bot (i.e. close terminal)
--   Kick the bot (this is important)
--   Switch on the bot
--   Invite the bot
--   Run the command again.
+- Switch off the bot (i.e. close terminal)
+- Kick the bot (this is important)
+- Switch on the bot
+- Invite the bot
+- Run the command again.
 
-Incase of any issues, contact:
+In case of any issues, contact:
 
 Ryheff24 on [Twitter](https://twitter.com/Ryheff24) or on Discord: `Ryheff24#6774`
 
