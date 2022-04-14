@@ -15,7 +15,8 @@
     "dev2": "nodemon bot2.js",
     "bot2": "node bot2.js",
     "prestart": "node deploy-commands.js",
-    "start": "npm run bot2"
+    "start": "npm run bot2",
+    "lint": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -44,5 +45,8 @@
     "@discordjs/rest": "^0.3.0",
     "discord-api-types": "^0.26.1",
     "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^15.0.0"
   }
 }
