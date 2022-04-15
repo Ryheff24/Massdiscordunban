@@ -10,6 +10,9 @@ For older releases, please check [here](https://github.com/Ryheff24/Massdiscordu
 
 These are nearly same as previous version. Just comes with minor changes.
 
+1. [Installing dependencies](#installing-dependencies)
+2. [Creating and Adding bot](#creating--adding-a-bot)
+
 ### Installing dependencies
 
 First install [Node.js](https://nodejs.org/en/download/current/) v16.6.0 or higher. Or follow this [guide](https://discordjs.guide/preparations/)
