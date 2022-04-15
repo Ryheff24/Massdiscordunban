@@ -2,6 +2,7 @@
   "name": "massdiscordunban",
   "version": "2.1.0",
   "description": "used to mass unban discord members",
+  "private": "true",
   "main": "index.js",
   "keywords": [
     "mass unban",
