@@ -16,7 +16,8 @@ First install [Node.js](https://nodejs.org/en/download/current/) v16.6.0 or high
 
 Then clone/download this repository and open the folder containing bot files.
 
-Some of the files should files should be: `index.js` & `package.json.`
+Two of those files should be: `index.js` & `package.json.`
+
 Open terminal in that folder (Command prompt, Powershell, Bash, etc) and run this command:
 
 ```bash
