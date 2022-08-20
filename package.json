@@ -8,7 +8,7 @@
     "discord"
   ],
   "scripts": {
-    "lint": "eslint --fix .",
+    "lint": "eslint --fix --ignore-path lint/.eslintignore -c lint/.eslintrc .",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node .",
     "dev": "nodemon ."
