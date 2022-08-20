@@ -2,15 +2,12 @@
 
 A discord bot to mass unban users in a server in the event of spam/rogue/malicious bot banning all users or simply to mass unban.
 
-This is version 2.0 which uses slash commands, lesser Intents & permissions.
-
-For version 1.x check [here](./README_old.md)
 
 ## Setup instructions
 
 ### Installing dependencies
 
-First install [Node.js](https://nodejs.org/en/download/current/) v16.6.0 or higher. Or follow this [guide](https://discordjs.guide/preparations/)
+First install [Node.js](https://nodejs.org/en/download/current/) v16.9.0 or higher. Or follow this [guide](https://discordjs.guide/preparations/)
 
 Then clone/download this repository and open the folder containing bot files. One of the files should files should be called `index.js`.
 
@@ -30,11 +27,11 @@ Navigate to the OAuth2 tab in the Discord Developers Dashboard and select URL Ge
 
 After input the following settings as shown below(applications.commands IS REQUIRED):
 
-![Authorization Flow](https://i.imgur.com/dM2KQev.png)
+![Authorization Flow](./images/scopes.png)
 
 _You may select `Public bot`, but it is not required. If selected anyone can invite your bot. If not, no body except you can invite bot._
 
-![Privileged Gateway Intents](https://i.imgur.com/NJUFUkj.png)
+![Privileged Gateway Intents](./images/Privileged-gateway-intents.png)
 
 #### Adding the bot
 
@@ -42,28 +39,24 @@ Follow this [guide](https://discordjs.guide/preparations/adding-your-bot-to-serv
 
 While setting up the invite link, make sure you select these bot permissions:
 
-![Bot Permissions](https://i.imgur.com/Rmon7OJ.png)
+![Bot Permissions](./images/botperms.png)
 
 _You may select Administrator permission instead of the above given permissions so that the bot works flawlessly_
 
 **Note:** You must have `Manage Server` permission or `Administrator` permission on the server where you will be adding the bot.
 
-#### Creating config.json
+### Creating config.json
 
 [Guide](https://discordjs.guide/creating-your-bot/#using-config-json)
 
-Copy `clientId` from OAuth2 page.
-![Copying Client ID](https://i.imgur.com/aiBC8cF.png)
+Copy `Reset Token` from Bot page and copy this token..
+![Copying Bot Token](./images/bot.png)
 
-Copy `token` from Bot page.
-![Copying Bot Token](https://i.imgur.com/DUKebFW.png)
-
-Create a new file called `config.json` and put the following:
+Change `example.config.json` to `config.json` and paste the token in the `token` field. 
 
 ```js
 {
-  "token": "insert-bot-token-here",
-  "clientId": "insert-clientId"
+  "token": "insert-bot-token-here"
 }
 ```
 
@@ -100,7 +93,6 @@ Wait for the bot to finish unbanning.
 
 To check if the bot has unbanned all users, go to Server Settings > Bans.
 There you should see 0 Bans or `NO BANS`.
-
 
 # I need HALP!
 
