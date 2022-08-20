@@ -75,16 +75,11 @@ npm start
 In the terminal window you will see:
 
 ```bash
-> massdiscordunban@1.1.0 prestart
-> node deploy-commands.js
-
-Successfully registered application commands.
-
-> massdiscordunban@1.1.0 start
+> massdiscordunban@2.0.0 start
 > node .
 
-Bot is online! Use /unban-all to unban all users.
-Your Bot invite link: https://discord.com/api/oauth2/authorize?client_id=<youtclientid>&scope=bot+applications.commands&permissions=2054
+Your bot invite: https://discord.com/api/oauth2/authorize?client_id=<your-client-id>&scope=bot+applications.commands&permissions=2054
+Use /unbanall to unban all users
 ```
 
 Open discord, and use the slash command: `/unban-all`.

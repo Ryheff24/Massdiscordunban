@@ -21,7 +21,7 @@ client.on('ready', async () => {
 	console.log('Your bot invite:', client.generateInvite({ scopes: ['bot', 'applications.commands'], permissions: [PermissionFlagsBits.BanMembers, PermissionFlagsBits.KickMembers, PermissionFlagsBits.SendMessages] }));
 	// const userid = client.user.id;
 	// await regeisterCommands(userid);
-	console.log(`Logged in as ${client.user.tag}!`);
+	console.log('Use /unbanall to unban all users');
 });
 
 client.on('interactionCreate', async (interaction) => {
