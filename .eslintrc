@@ -9,7 +9,7 @@
   "parserOptions": {
     "ecmaVersion": "latest"
   },
-
+  "ignorePatterns" : ["node_modules/*", "images/*", ".github/*"],
   "rules": {
     "arrow-spacing": ["warn", { "before": true, "after": true }],
     "brace-style": ["error", "stroustrup", { "allowSingleLine": true }],
